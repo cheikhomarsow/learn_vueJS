@@ -19,26 +19,26 @@
     @include('projects.list')
 </div>
 <div class="control">
-    <form method="post" action="{{ route('tmp-route-post') }}" @submit.prevent="onSubmit" @keydown="errors.clear($event.target.name)" >
+    <form method="post" action="{{ route('tmp-route-post') }}" @submit.prevent="onSubmit" @keydown="form.errors.clear($event.target.name)" >
         {{ csrf_field() }}
 
         <div class="field">
             <label class="label">Name</label>
             <div class="control">
-                <input class="input" type="text" name="name" v-model="name" placeholder="Name">
-                <span class="help is-danger" v-if="errors.has('name')" v-text="errors.get('name')"></span>
+                <input class="input" type="text" name="name" v-model="form.name" placeholder="Name">
+                <span class="help is-danger" v-if="form.errors.has('name')" v-text="form.errors.get('name')"></span>
             </div>
         </div>
         <div class="field">
             <label class="label">Description</label>
             <div class="control">
-                <input class="input" type="text" v-model="description" name="description" placeholder="Description">
-                <span class="help is-danger" v-if="errors.has('description')" v-text="errors.get('description')"></span>
+                <input class="input" type="text" v-model="form.description" name="description" placeholder="Description">
+                <span class="help is-danger" v-if="form.errors.has('description')" v-text="form.errors.get('description')"></span>
             </div>
         </div>
         <div class="field is-grouped">
             <div class="control">
-                <button class="button is-link" :disabled="errors.any()" type="submit">Submit</button>
+                <button class="button is-link" :disabled="form.errors.any()" type="submit">Submit</button>
             </div>
         </div>
     </form>
